@@ -1,0 +1,7 @@
+mlist <- list()
+mlist$m1 <- feols(commune ~ muslim, data = bosker, cluster = c('city_id'))
+mlist$m2 <- feols(commune ~ muslim | country, data = bosker, cluster = c('city_id'))
+mlist$m3 <- feols(commune ~ muslim + country, data = bosker, cluster = c('city_id'))
+mlist$m4 <- feols(commune ~ muslim + log(citypop_le5 + 1) | country, data = bosker, cluster = c('city_id'))
+mlist$m5 <- feols(commune ~ muslim + log(citypop_le10 + 1) | country, data = bosker, cluster = c('city_id'))
+etable(mlist)
